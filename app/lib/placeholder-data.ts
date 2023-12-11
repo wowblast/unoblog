@@ -7,7 +7,7 @@ export const categories: Category[] = [
     id: "1",
     title: "Next JS",
     slug: "next",
-    color: "#000000",
+    color: "#dddddd",
   },
   {
     id: "2",
@@ -55,7 +55,7 @@ export const posts: Post[] = [
       id: "1",
       title: "Next JS",
       slug: "next",
-      color: "#000000",
+      color: "#dddddd",
     },
   },
   {
@@ -71,7 +71,7 @@ export const posts: Post[] = [
       id: "1",
       title: "Next JS",
       slug: "next",
-      color: "#000000",
+      color: "#dddddd",
     },
   },
 ];
