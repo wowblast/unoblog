@@ -6,7 +6,7 @@ import styles from "./loginPage.module.css";
 
 const LoginPage = () => {
   const router = useRouter();
-  const { status } = useSession()
+  const { status } = useSession();
 
   if (status === "authenticated") {
     router.push("/");
@@ -15,11 +15,11 @@ const LoginPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.socialButton} onClick={() => signIn("google")} >
+        <div className={styles.socialButton} onClick={() => signIn("google")}>
           Sign in with Google
         </div>
-        <div className={styles.socialButton} onClick={() => signIn("github")}>
-          Sign in with Github
+        <div className={styles.socialButton} onClick={() => signIn("twitch")}>
+          Sign in with Twitch
         </div>
       </div>
     </div>
