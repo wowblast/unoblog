@@ -1,13 +1,13 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link'
-import { status } from '@/app/lib/placeholder-data';
+import { signOut, useSession } from "next-auth/react";
 
 import styles from './AuthLinks.module.css'
 
 const AuthLinks = () => {
     const [open, setOpen] = useState(false)
-
+    const { data: session } = useSession();
 
 
     const toggleMenu = () => {
@@ -15,12 +15,13 @@ const AuthLinks = () => {
     }
 
     const handleLogout = () => {
-        // logout    }
+        void signOut();
+        setOpen(false)
     }
 
     return (
         <>
-            {status !== "authenticated" ? (
+            {session ? (
                 <>
                     <Link href="/write" className={styles.link}>Write</Link>
                     <span className={styles.link} onClick={handleLogout}>
@@ -28,10 +29,7 @@ const AuthLinks = () => {
                     </span>
                 </>
             ) : (
-                <>
-                    <Link href="/login" className={styles.link}>Login</Link>
-                </>
-
+                <Link href="/login" className={styles.link}>Login</Link>
             )}
 
             <div className={styles.hamburger} onClick={toggleMenu}>
@@ -46,17 +44,15 @@ const AuthLinks = () => {
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
 
-                    {status !== "authenticated" ? (
+                    {session ? (
                         <>
                             <Link href="/write">Write</Link>
-                            <span className={styles.link} onClick={handleLogout}>Logout</span>
+                            <span className={styles.mobileLink} onClick={handleLogout}>
+                                Logout
+                            </span>
                         </>
                     ) : (
-                        <>
-
-                            <Link href="/login">Login</Link>
-                        </>
-
+                        <Link href="/login">Login</Link>
                     )}
                 </div>
             )}

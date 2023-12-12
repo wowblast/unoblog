@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Post } from "@/app/lib/definitions";
+import { Post } from "@/lib/definitions";
 
 import styles from "./Card.module.css";
 

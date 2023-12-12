@@ -9,14 +9,16 @@ import styles from "./page.module.css";
 
 interface HomeProps {
   searchParams: {
-    page: string;
     cat: string;
+    page: string;
+    limit: string;
   };
 }
 
 export default function Home({ searchParams }: HomeProps) {
-  const page = parseInt(searchParams.page) || 1;
   const cat = searchParams.cat || "";
+  const page = parseInt(searchParams.page) || 1;
+  const limit = parseInt(searchParams.limit) || 4;
 
   return (
     <main className={styles.container}>
@@ -25,7 +27,7 @@ export default function Home({ searchParams }: HomeProps) {
         <CategoryList />
       </Suspense>
       <div className={styles.content}>
-        <CardList page={page} cat={cat} />
+        <CardList page={page} cat={cat} limit={limit} />
         <Menu />
       </div>
     </main>

@@ -1,4 +1,10 @@
 .link {
+  color: var(--textColor);
+  cursor: pointer;
+}
+
+.mobileLink {
+  color: var(--textColor);
   cursor: pointer;
 }
 

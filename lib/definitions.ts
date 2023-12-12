@@ -1,3 +1,5 @@
+export type Theme = "light" | "dark";
+
 export type User = {
   id: string;
   name: string;
@@ -34,4 +36,16 @@ export type Post = {
   userEmail?: string;
   user?: User;
   comments?: Comment[];
+};
+
+export type PaginatedPostsResponse = {
+  posts: Post[];
+  pagination: {
+    totalPages: number;
+    currentPage: number;
+    offset: number;
+    limit: number;
+    hasPrev: boolean;
+    hasNext: boolean;
+  };
 };

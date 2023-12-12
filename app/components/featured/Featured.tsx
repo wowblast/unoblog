@@ -12,7 +12,7 @@ const Featured = () => {
             </h1>
             <div className={styles.post}>
                 <div className={styles.imageContainer}>
-                    <Image src="https://res.cloudinary.com/dqcoo1wnq/image/upload/v1702275296/swz5vbykpoiilhgmwtus.webp" alt="" fill className={styles.image} />
+                    <Image src="https://res.cloudinary.com/dqcoo1wnq/image/upload/v1702406848/njmh0frr0zax62yuwgoi.jpg" alt="" fill className={styles.image} />
                 </div>
                 <div className={styles.textContainer}>
                     <h2 className={styles.postTitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>

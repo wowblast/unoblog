@@ -1,21 +1,7 @@
 "use client";
-import React, { createContext, useState, useContext, useEffect, type ReactNode } from 'react';
-
-type Theme = 'light' | 'dark';
-
-type ThemeContextType = {
-    theme: Theme;
-    toggle: () => void;
-};
-
-const defaultState: ThemeContextType = {
-    theme: 'light',
-    toggle: () => {
-        throw new Error("toggle function must be overridden by ThemeContextProvider");
-    },
-};
-
-export const ThemeContext = createContext<ThemeContextType>(defaultState);
+import React, { useState, useContext, useEffect, type ReactNode } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
+import { Theme } from '../definitions';
 
 type ThemeContextProviderProps = {
     children: ReactNode;
@@ -27,7 +13,7 @@ const getInitialTheme = () => {
         return storedTheme || 'light';
     }
 }
-export const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({ children }) => {
+const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({ children }) => {
     const [mounted, setMounted] = useState(false);
     const [theme, setTheme] = useState<Theme>(() => getInitialTheme()!);
 
@@ -56,3 +42,4 @@ export const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({ chil
 
 export const useTheme = () => useContext(ThemeContext);
 
+export default ThemeContextProvider;

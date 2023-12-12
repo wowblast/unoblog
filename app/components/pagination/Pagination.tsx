@@ -5,36 +5,37 @@ import { useRouter } from "next/navigation";
 import styles from "./Pagination.module.css";
 
 interface PaginationProps {
-    page: number;
+    currentPage: number;
     hasPrev: boolean;
     hasNext: boolean;
 }
 
-const Pagination = ({ page, hasPrev, hasNext }: PaginationProps) => {
+const Pagination = ({ currentPage, hasPrev, hasNext }: PaginationProps) => {
     const router = useRouter();
 
     return (
         <>
-            {page > 1 && (
-                <div className={styles.container}>
-                    <button
-                        className={styles.button}
-                        disabled={!hasPrev}
-                        onClick={() => router.push(`?page=${page - 1}`)}
-                    >
-                        Previous
-                    </button>
-                    <button
-                        disabled={!hasNext}
-                        className={styles.button}
-                        onClick={() => router.push(`?page=${page + 1}`)}
-                    >
-                        Next
-                    </button>
-                </div>
-            )}
+            {
+                !hasPrev && !hasNext ? null : (
+                    <div className={styles.container}>
+                        <button
+                            className={styles.button}
+                            disabled={!hasPrev}
+                            onClick={() => router.push(`?page=${currentPage - 1}`)}
+                        >
+                            Previous
+                        </button>
+                        <button
+                            disabled={!hasNext}
+                            className={styles.button}
+                            onClick={() => router.push(`?page=${currentPage + 1}`)}
+                        >
+                            Next
+                        </button>
+                    </div>
+                )
+            }
         </>
-
     );
 };
 
