@@ -12,13 +12,7 @@ const Footer = async () => {
     <div className={styles.container}>
       <div className={styles.info}>
         <div className={styles.logo}>
-          <Image
-            src="/logo.png"
-            alt="unoblog"
-            width={50}
-            height={50}
-            style={{ borderRadius: "50%" }}
-          />
+          
           <h1 className={styles.logoText}>EpicEnigma Echo</h1>
         </div>
         <p className={styles.desc}>

@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import styles from "./Featured.module.css";
 import { getPosts } from "@/lib/data";
+import Link from "next/link";
 
 const Featured = async () => {
   const {
@@ -35,7 +36,9 @@ const Featured = async () => {
                 ? `${posts[0].desc.slice(0, 200)}...`
                 : posts[0].desc}
             </p>
-            <button className={styles.button}>Read More</button>
+            <Link href={`/posts/${posts[0].slug}`} className={styles.link}>
+              Read More
+            </Link>{" "}
           </div>
         </div>
       )}
