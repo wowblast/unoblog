@@ -13,3 +13,5 @@ export type PaginatedPostsResponse = {
     hasNext: boolean;
   };
 };
+
+export type { Post };

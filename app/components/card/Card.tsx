@@ -9,7 +9,12 @@ const Card = ({ post }: { post: Post }) => {
     <div className={styles.container} key={post.id}>
       {post.img && (
         <div className={styles.imageContainer}>
-          <Image src={post.img} alt={post.title} fill className={styles.image} />
+          <Image
+            src={post.img}
+            alt={post.title}
+            fill
+            className={styles.image}
+          />
         </div>
       )}
       <div className={styles.textContainer}>
@@ -19,7 +24,8 @@ const Card = ({ post }: { post: Post }) => {
               year: "numeric",
               month: "long",
               day: "numeric",
-            })} -{" "}
+            })}{" "}
+            -{" "}
           </span>
           <span className={styles.category}>{post.catSlug}</span>
         </div>

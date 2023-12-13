@@ -7,7 +7,7 @@ import EmbebTwitter from "@/app/components/embed-components/embed-twitter/embeb-
 import CommentPage from "@/app/components/comments/comment-page";
 import EmbedYouTube from "@/app/components/embed-components/embed-youTube/embedYouTube";
 import EmbedTwitchClip from "@/app/components/embed-components/embed-twitch/EmbedTwitch";
-import EditPostPage from "@/app/edit/page";
+//import EditPostPage from "@/app/edit/page";
 interface SinglePageProps {
   params: {
     slug: string;
@@ -51,7 +51,6 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
           </div>
         )}
       </div>
-      <EditPostPage post={post!} />
 
       <div className={styles.content}>
         <div className={styles.post}>

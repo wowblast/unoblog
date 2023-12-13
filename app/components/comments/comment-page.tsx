@@ -7,6 +7,7 @@ interface CommentProps {
 }
 
 const CommentPage = async ({ postSlug }: CommentProps) => {
+    
   const comments = await getCommentsbyPost(postSlug);
 
   return (
