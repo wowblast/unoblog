@@ -1,0 +1,17 @@
+/* Edit.module.css */
+.editButton {
+    background-color: #3498db; /* Blue color, you can change it to your preference */
+    color: #fff; /* White text */
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
+    margin-top: 2px;
+  }
+  
+  .editButton:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+  }
+  

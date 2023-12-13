@@ -72,7 +72,7 @@ a {
 }
 
 .ql-container {
-  font-size: 28px !important;
+  font-size: 10px !important;
 }
 
 .quill > .ql-container > .ql-editor.ql-blank::before {

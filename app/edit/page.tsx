@@ -1,47 +1,51 @@
 // pages/edit/[slug].tsx
+"use client";
 import { getSinglePost } from "@/lib/data";
-import { getSession, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import styles from "./Edit.module.css";
+import { useRouter } from "next/navigation";
+
 interface Props {
-  slug: string;
+  post: {
+    id: string;
+    createdAt: Date;
+    slug: string;
+    title: string;
+    desc: string;
+    img: string | null;
+    views: number;
+    catSlug: string;
+    userEmail: string;
+    tweetLink: string | null;
+    youTubeLink: string | null;
+    TwitchClipLink: string | null;
+    user: {
+      image: string | null;
+      id: string;
+      email: string | null;
+      emailVerified: Date | null;
+      name: string | null;
+    };
+  };
 }
-const EditPostPage = async ({ slug }: Props) => {
-  const post = await getSinglePost(slug);
+const EditPostPage = ({ post }: Props) => {
+  const router = useRouter();
   const { data: session } = useSession();
 
-  // Redirect unauthenticated users to the homepage
-  if (!session) {
-    return <p>You are not authenticated. Redirecting...</p>;
-  }
-
-  // Redirect users who are not the author of the post
-  /*if (session.user.email !== post.user.email) {
-    return <p>You do not have permission to edit this post. Redirecting...</p>;
-  }*/
-
   const handleEditClick = () => {
-    // router.push(`/write/${post.slug}`);
-    console.log("editi");
+    router.push(`/write/?slug=${post.slug}`);
+    //.log("editi");
   };
 
   return (
     <>
-      {session.user?.email === post?.user.email && (
-        <button onClick={handleEditClick}>Edit</button>
+      {session?.user?.email === post?.user.email && (
+        <button className={styles.editButton} onClick={handleEditClick}>
+          Edit
+        </button>
       )}
     </>
   );
 };
-/*
-export async function EditPostPage(context) {
-  const { params } = context;
-  const post = await getSinglePost(params.slug);
 
-  return {
-    props: {
-      post,
-    },
-  };
-}
-*/
 export default EditPostPage;

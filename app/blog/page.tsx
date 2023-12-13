@@ -24,7 +24,6 @@ const BlogPage = ({ searchParams }: BlogPageProps) => {
                 <Suspense fallback={<div>Loading...</div>}>
                     <CardList page={page} cat={cat} limit={limit} />
                 </Suspense>
-                <Menu />
             </div>
         </div>
     );

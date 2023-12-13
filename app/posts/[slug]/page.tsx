@@ -5,8 +5,9 @@ import Menu from "@/app/components/menu/Menu";
 import { getSinglePost } from "@/lib/data";
 import EmbebTwitter from "@/app/components/embed-components/embed-twitter/embeb-twitter";
 import CommentPage from "@/app/components/comments/comment-page";
-import EmbedYouTube from "@/app/components/embed-components/embed-twitter/embed-youTube/embedYouTube";
-import EmbedTwitchClip from "@/app/components/embed-components/embed-twitter/embed-twitch/EmbedTwitch";
+import EmbedYouTube from "@/app/components/embed-components/embed-youTube/embedYouTube";
+import EmbedTwitchClip from "@/app/components/embed-components/embed-twitch/EmbedTwitch";
+import EditPostPage from "@/app/edit/page";
 interface SinglePageProps {
   params: {
     slug: string;
@@ -50,6 +51,8 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
           </div>
         )}
       </div>
+      <EditPostPage post={post!} />
+
       <div className={styles.content}>
         <div className={styles.post}>
           <div
@@ -64,7 +67,6 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
 
           <CommentPage postSlug={post?.slug!} />
         </div>
-        <Menu />
       </div>
     </div>
   );

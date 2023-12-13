@@ -28,7 +28,6 @@ export default function Home({ searchParams }: HomeProps) {
       </Suspense>
       <div className={styles.content}>
         <CardList page={page} cat={cat} limit={limit} />
-        <Menu />
       </div>
     </main>
   );

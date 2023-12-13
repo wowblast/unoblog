@@ -23,12 +23,6 @@ const LoginPage = () => {
           Sign in with Twitch
         </div>
       </div>
-      <div>
-        <h1>helooo</h1>
-
-        <TwitterTweetEmbed tweetId="1734684583688573273" />
-        {/* Replace "your_tweet_id_here" with the actual tweet ID */}
-      </div>
     </div>
   );
 };

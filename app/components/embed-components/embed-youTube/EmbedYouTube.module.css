@@ -1,0 +1,12 @@
+/* EmbedYouTube.module.css */
+.embedContainer {
+  margin: 0 auto 20px; /* 0 top/bottom, auto left/right, 20px bottom */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  }
+  
+  .embedIframe {
+    width: 100%;
+    max-width: 60%;
+  }
+  

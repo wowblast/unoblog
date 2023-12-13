@@ -1,0 +1,13 @@
+/* EmbedTwitchClip.module.css */
+.embedContainer {
+  margin: 0 auto 20px; /* 0 top/bottom, auto left/right, 20px bottom */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.embedIframe {
+  width: 100%;
+  height: 400px; /* Adjust the height based on your preference */
+  max-width: 60%;
+}
