@@ -6,16 +6,18 @@ import { useSession } from "next-auth/react";
 import ReactQuill from "react-quill";
 import { type Category } from "@prisma/client";
 import { getCategories, uploadToCloudinary } from "@/lib/data";
-
 import styles from "./writePage.module.css";
 import "react-quill/dist/quill.bubble.css";
+import LinkParser from "../components/linkParser/LinkParser";
 
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
 
   const ref = useRef<any>();
-
+  const [twitterData, setTwitterData] = useState<string | null>(null);
+  const [youtubeData, setYoutubeData] = useState<string | null>(null);
+  const [twitchData, setTwitchData] = useState<string | null>(null);
   const [categoryList, setCategoryList] = useState<Category[]>([]);
 
   const [file, setFile] = useState<File | null | undefined>(null);
@@ -35,7 +37,6 @@ const WritePage = () => {
     getCategories().then(setCategoryList);
   }, []);
 
-
   const slugify = (str: string) =>
     str
       .toLowerCase()
@@ -52,6 +53,9 @@ const WritePage = () => {
         desc: value,
         img: imagePreviewUrl,
         slug: slugify(title),
+        tweetLink: twitterData,
+        youTubeLink: youtubeData,
+        TwitchClipLink: twitchData,
         catSlug: catSlug || "style", //If not selected, choose the general category
       }),
     });
@@ -60,6 +64,8 @@ const WritePage = () => {
       const data = await res.json();
       router.push(`/posts/${data.slug}`);
     }
+
+    console.log(twitterData, youtubeData, twitchData);
   };
 
   useEffect(() => {
@@ -76,7 +82,7 @@ const WritePage = () => {
             setFile(null);
           }
         } catch (error) {
-          console.error('Error uploading file:', error);
+          console.error("Error uploading file:", error);
         }
       }
     };
@@ -90,11 +96,10 @@ const WritePage = () => {
 
   const uploadFile = () => {
     ref.current?.click();
-  }
+  };
 
   return (
     <div className={styles.container}>
-
       <div className={styles.header}>
         <input
           type="text"
@@ -104,10 +109,15 @@ const WritePage = () => {
         />
 
         <div className={styles.options}>
-          <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)} >
+          <select
+            className={styles.select}
+            onChange={(e) => setCatSlug(e.target.value)}
+          >
             <option value="">Category</option>
             {categoryList.map((item) => (
-              <option value={item.slug} key={item.id}>{item.title}</option>
+              <option value={item.slug} key={item.id}>
+                {item.title}
+              </option>
             ))}
           </select>
 
@@ -159,6 +169,23 @@ const WritePage = () => {
           placeholder="Write here..."
         />
       </div>
+      <LinkParser
+        placeholder="Paste Twitter Link"
+        onExtractedDataChange={setTwitterData}
+      />
+      {twitterData && <div>Twitter ID: {twitterData}</div>}
+
+      <LinkParser
+        placeholder="Paste YouTube Link"
+        onExtractedDataChange={setYoutubeData}
+      />
+      {youtubeData && <div>YouTube ID: {youtubeData}</div>}
+
+      <LinkParser
+        placeholder="Paste Twitch Link"
+        onExtractedDataChange={setTwitchData}
+      />
+      {twitchData && <div>Twitch clip ID: {twitchData}</div>}
     </div>
   );
 };

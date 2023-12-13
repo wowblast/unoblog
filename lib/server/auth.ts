@@ -17,7 +17,7 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(db),
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientId: process.env.GOOGLE_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     TwitchProvider({

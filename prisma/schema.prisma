@@ -78,6 +78,9 @@ model Post {
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
+  tweetLink String?
+  youTubeLink String?
+  TwitchClipLink String?
   comments  Comment[]
 }
 

@@ -31,9 +31,7 @@ const AuthLinks = () => {
           </span>
           <div className={styles.userImageContainer}>
             <Image
-              src={
-                session.user?.image!
-              }
+              src={session.user?.image!}
               alt=""
               fill
               className={styles.avatar}

@@ -1,9 +1,32 @@
-import { Category, Post, User } from "@prisma/client";
+import { Category, Post, User , Comment} from "@prisma/client";
 import { PaginatedPostsResponse } from "./definitions";
 
 export const getCategories = async (): Promise<Category[]> => {
   try {
     const response = await fetch("http://localhost:3000/api/categories", {
+      method: "GET",
+      cache: "no-cache",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch");
+    }
+
+    const responseData = await response.json();
+
+    return responseData;
+  } catch (err) {
+    throw new Error("Failed to upload");
+  }
+};
+
+export interface ExtendedComment extends Comment {
+  user: User;
+}
+
+export const getCommentsbyPost = async ( postSlug: string): Promise<ExtendedComment[]| null> => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/comments?postSlug=${postSlug}`, {
       method: "GET",
       cache: "no-cache",
     });

@@ -3,7 +3,10 @@ import Image from "next/image";
 import styles from "./SinglePage.module.css";
 import Menu from "@/app/components/menu/Menu";
 import { getSinglePost } from "@/lib/data";
-
+import EmbebTwitter from "@/app/components/embed-components/embed-twitter/embeb-twitter";
+import CommentPage from "@/app/components/comments/comment-page";
+import EmbedYouTube from "@/app/components/embed-components/embed-twitter/embed-youTube/embedYouTube";
+import EmbedTwitchClip from "@/app/components/embed-components/embed-twitter/embed-twitch/EmbedTwitch";
 interface SinglePageProps {
   params: {
     slug: string;
@@ -12,7 +15,6 @@ interface SinglePageProps {
 
 const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
   const post = await getSinglePost(slug);
-
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
@@ -21,17 +23,23 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
           <div className={styles.user}>
             {post?.user?.image && (
               <div className={styles.userImageContainer}>
-                <Image src={"https://lh3.googleusercontent.com/a/ACg8ocJZJ89wGhnPGsRaOGKAL2JOBik9nX81bczo3PtqFkR4iy0=s96-c"} alt="" fill className={styles.avatar} />
+                <Image
+                  src={post.user.image}
+                  alt=""
+                  fill
+                  className={styles.avatar}
+                />
               </div>
             )}
             <div className={styles.userTextContainer}>
               <span className={styles.username}>{post?.user?.name}</span>
               <span className={styles.date}>
-                {post?.createdAt && new Date(post.createdAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {post?.createdAt &&
+                  new Date(post.createdAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
               </span>
             </div>
           </div>
@@ -46,8 +54,15 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
         <div className={styles.post}>
           <div
             className={styles.description}
-            dangerouslySetInnerHTML={{ __html: post?.desc ?? '' }}
+            dangerouslySetInnerHTML={{ __html: post?.desc ?? "" }}
           />
+          {post?.tweetLink && <EmbebTwitter tweetId={post?.tweetLink!} />}
+          {post?.youTubeLink && <EmbedYouTube videoId={post?.youTubeLink!} />}
+          {post?.TwitchClipLink && (
+            <EmbedTwitchClip clipId={post?.TwitchClipLink!} />
+          )}
+
+          <CommentPage postSlug={post?.slug!} />
         </div>
         <Menu />
       </div>

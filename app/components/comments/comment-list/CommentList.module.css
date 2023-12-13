@@ -1,0 +1,38 @@
+/* CommentsList.module.css */
+.commentsList {
+  list-style: none;
+  padding: 0;
+}
+
+.commentItem {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.avatarContainer {
+  margin-right: 16px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentContent {
+  flex: 1;
+}
+
+.commentDetails {
+  margin-top: 8px;
+  font-size: 0.8em;
+  color: #555;
+}
+
+.createdAt {
+  margin-right: 8px;
+}

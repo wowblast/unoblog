@@ -1,6 +1,7 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { TwitterTweetEmbed } from "react-twitter-embed";
 
 import styles from "./loginPage.module.css";
 
@@ -21,6 +22,12 @@ const LoginPage = () => {
         <div className={styles.socialButton} onClick={() => signIn("twitch")}>
           Sign in with Twitch
         </div>
+      </div>
+      <div>
+        <h1>helooo</h1>
+
+        <TwitterTweetEmbed tweetId="1734684583688573273" />
+        {/* Replace "your_tweet_id_here" with the actual tweet ID */}
       </div>
     </div>
   );

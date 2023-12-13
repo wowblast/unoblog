@@ -1,5 +1,3 @@
-
-
 import CardList from "./components/card-list/CardList";
 import CategoryList from "./components/category-list/CategoryList";
 import Featured from "./components/featured/Featured";
@@ -23,7 +21,7 @@ export default function Home({ searchParams }: HomeProps) {
   return (
     <main className={styles.container}>
       <Featured />
-      <Suspense fallback={<div>Loading...</div>} >
+      <Suspense fallback={<div>Loading...</div>}>
         <CategoryList />
       </Suspense>
       <div className={styles.content}>
