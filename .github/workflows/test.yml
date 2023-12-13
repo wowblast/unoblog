@@ -19,6 +19,6 @@ jobs:
 
     - name: Deploy to Vercel
       run: |
-        vercel --prod
+        vercel --prod --debug
       env:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
