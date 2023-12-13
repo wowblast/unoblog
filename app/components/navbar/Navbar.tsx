@@ -1,28 +1,31 @@
+import React from "react";
+import Link from "next/link";
+import AuthLinks from "../auth-links/AuthLinks";
+import Toggle from "../toggle/Toggle";
 
-import React from 'react'
-import Link from 'next/link'
-import AuthLinks from '../auth-links/AuthLinks'
-import Toggle from '../toggle/Toggle'
-
-import styles from './Navbar.module.css'
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-    return (
-        <div className={styles.container}>
-            <Link href="/" className={styles.logo}>unoBlog</Link>
+  return (
+    <div className={styles.container}>
+      <Link href="/" className={styles.logo}>
+        EpicEnigma Echo
+      </Link>
 
-            <div className={styles.menu}>
-                <Toggle />
+      <div className={styles.menu}>
+        <Toggle />
 
-                <Link href="/" className={styles.link}>Home</Link>
-                <Link href="/about" className={styles.link}>About</Link>
-                <Link href="/contact" className={styles.link}>Contact</Link>
+        <Link href="/" className={styles.link}>
+          Home
+        </Link>
+        <Link href="/about" className={styles.link}>
+          About
+        </Link>
 
-                <AuthLinks />
+        <AuthLinks />
+      </div>
+    </div>
+  );
+};
 
-            </div>
-        </div>
-    )
-}
-
-export default Navbar
+export default Navbar;
