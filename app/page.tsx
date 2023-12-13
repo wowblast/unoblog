@@ -4,6 +4,7 @@ import Featured from "./components/featured/Featured";
 import Menu from "./components/menu/Menu";
 import { Suspense } from "react";
 import styles from "./page.module.css";
+import AdBlockDetector from "./components/addBlokerDetector/AdBlockerDetector";
 
 interface HomeProps {
   searchParams: {
@@ -20,6 +21,7 @@ export default function Home({ searchParams }: HomeProps) {
 
   return (
     <main className={styles.container}>
+      <AdBlockDetector />
       <Featured />
       <Suspense fallback={<div>Loading...</div>}>
         <CategoryList />
