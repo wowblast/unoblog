@@ -1,4 +1,4 @@
-name: Test
+name: Deploy to Vercel
 
 on:
   push:
@@ -6,20 +6,19 @@ on:
       - main
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.10.0"
+    - name: Install Vercel CLI
+      run: |
+        npm install -g vercel
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests (simulated)
-        run: echo "Running tests..."
+    - name: Deploy to Vercel
+      run: |
+        vercel --prod
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
