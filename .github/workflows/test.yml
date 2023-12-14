@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  test_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,11 +16,19 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "latest" # Choose the Node.js version you need
+          node-version: "latest"
 
       - name: Install Dependencies
         run: |
           npm install
+
+      - name: Run Cypress E2E Tests
+        run: |
+          npm run e2e  # Assuming your "e2e" script runs Cypress tests
+
+      - name: Run Cypress Component Tests
+        run: |
+          npm run component  # Assuming your "component" script runs Cypress tests
 
       - name: Install Vercel CLI
         run: |
@@ -28,7 +36,7 @@ jobs:
 
       - name: Build
         run: |
-          npm run build  # Adjust the build command based on your project setup
+          npm run build
 
       - name: Deploy to Vercel
         run: |
