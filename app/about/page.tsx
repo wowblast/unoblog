@@ -1,4 +1,6 @@
 import styles from "./About.module.css";
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 const About = () => {
   return (
     <div className={styles.container}>

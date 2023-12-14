@@ -7,7 +7,8 @@ import Footer from "./components/footer/Footer";
 import AdSense from "./components/addSense/AddSense";
 
 import "./globals.css";
-
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -5,7 +5,8 @@ import Menu from "./components/menu/Menu";
 import { Suspense } from "react";
 import styles from "./page.module.css";
 import AdBlockDetector from "./components/addBlokerDetector/AdBlockerDetector";
-
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 interface HomeProps {
   searchParams: {
     cat: string;

@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
 import styles from "./loginPage.module.css";
-
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 const LoginPage = () => {
   const router = useRouter();
   const { status } = useSession();
