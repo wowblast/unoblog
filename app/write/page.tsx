@@ -145,7 +145,7 @@ const WritePage = () => {
           placeholder="Title"
           className={styles.input}
           value={title}
-          onChange={(e) => handleTitleChange}
+          onChange={(e) => setTitle(e.target.value)}
         />
 
         <div className={styles.options}>
