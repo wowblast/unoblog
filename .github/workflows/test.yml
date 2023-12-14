@@ -21,6 +21,7 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
+          npm install -g start-server-and-test
 
       - name: Run Cypress E2E Tests
         run: |
