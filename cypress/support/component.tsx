@@ -15,6 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import ThemeContextProvider from "../../lib/providers/ThemeProvider";
+import AuthProvider from "@/lib/providers/AuthProvider";
 import "./commands";
 
 // Alternatively you can use CommonJS syntax:
@@ -35,7 +36,11 @@ declare global {
 }
 
 Cypress.Commands.add("mount", (component) => {
-  const wrapped = <ThemeContextProvider>{component}</ThemeContextProvider>;
+  const wrapped = (
+    <AuthProvider>
+      <ThemeContextProvider>{component}</ThemeContextProvider>
+    </AuthProvider>
+  );
 
   return mount(wrapped);
 });

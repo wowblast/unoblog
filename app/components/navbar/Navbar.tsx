@@ -8,14 +8,14 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <div className={styles.container}>
-      <Link href="/" className={styles.logo}>
+      <Link href="/" className={styles.logo} data-testId="logo">
         EpicEnigma Echo
       </Link>
 
       <div className={styles.menu}>
-        <Toggle />
+        <Toggle data-testId="toggleLabel" />
 
-        <Link href="/" className={styles.link}>
+        <Link href="/" className={styles.link} data-testId="homeLink">
           Home
         </Link>
         <Link href="/about" className={styles.link} data-testId="aboutLink">

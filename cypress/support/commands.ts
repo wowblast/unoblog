@@ -13,6 +13,12 @@
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
+Cypress.Commands.add('mockGetPosts', (responseData) => {
+    cy.intercept('GET', '/api/posts', {
+      statusCode: 200,
+      body: responseData,
+    }).as('getPosts');
+  });
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

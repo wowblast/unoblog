@@ -1,0 +1,9 @@
+{
+    "data": {
+      "user": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "image": "https://example.com/user-image.jpg"
+      }
+    }
+  }
