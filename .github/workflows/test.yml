@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Cypress Component Tests
         run: |
-          npm run component  # Assuming your "component" script runs Cypress tests
+          npm run component
 
       - name: Install Vercel CLI
         run: |
