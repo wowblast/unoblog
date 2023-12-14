@@ -4,7 +4,7 @@ export const fetchCache = "force-no-store";
 const About = () => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>About Us</h1>
+      <h1 className={styles.header} data-testId="aboutTitle">About Us</h1>
       <div className={styles.content}>
         <p>
           Unosquare is a digital engineering company founded in 2009. The

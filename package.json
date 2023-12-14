@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "component": "cypress run --component"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.0.10",
@@ -23,6 +25,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cypress": "^13.6.1",
     "prisma": "^5.7.0",
     "typescript": "^5"
   }

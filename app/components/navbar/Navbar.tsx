@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link href="/" className={styles.link}>
           Home
         </Link>
-        <Link href="/about" className={styles.link}>
+        <Link href="/about" className={styles.link} data-testId="aboutLink">
           About
         </Link>
 
