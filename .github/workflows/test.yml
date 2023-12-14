@@ -13,9 +13,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest" # Choose the Node.js version you need
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
       - name: Install Vercel CLI
         run: |
           npm install -g vercel
+
+      - name: Build
+        run: |
+          npm run build  # Adjust the build command based on your project setup
 
       - name: Deploy to Vercel
         run: |
