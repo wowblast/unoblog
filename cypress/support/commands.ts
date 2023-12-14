@@ -13,15 +13,29 @@
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
-Cypress.Commands.add('mockGetPosts', (responseData) => {
+declare namespace Cypress {
+    interface Chainable<Subject = any> {
+      mockGetPosts(responseData: any): Chainable<any>;
+      mockAuthSession(responseData: any): Chainable<any>;
+
+    }
+  }
+  
+  Cypress.Commands.add('mockGetPosts', (responseData) => {
     cy.intercept('GET', '/api/posts', {
       statusCode: 200,
       body: responseData,
     }).as('getPosts');
   });
-//
+
+  Cypress.Commands.add('mockAuthSession', (responseData) => {
+    cy.intercept('GET', '/api/auth/session', {
+      statusCode: 200,
+      body: responseData,
+    }).as('authSession');
+  });
 // -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+ //Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
 //
 // -- This is a dual command --

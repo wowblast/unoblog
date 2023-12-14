@@ -1,29 +1,36 @@
+import React from "react";
 import styles from "./About.module.css";
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
+
 const About = () => {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.header} data-testId="aboutTitle">About Us</h1>
-      <div className={styles.content}>
+    <div className={styles.container} data-testId="aboutComponent">
+      <h1 className={styles.header} data-testId="aboutTitle">
+        About EpicEnigma Echo
+      </h1>
+      <div className={styles.content} data-testId="aboutContent">
         <p>
-          Unosquare is a digital engineering company founded in 2009. The
-          company was created in response to the need for businesses to enhance
-          their digital product engineering teams.
+          Welcome to EpicEnigma Echo - your go-to platform for exploring the
+          thrilling world of gaming, entertainment, Twitch, YouTube, and
+          technology!
         </p>
-        <blockquote className={styles.quote}>
-          “Technology is a powerful tool, but, it is the people who build it and
-          use it that truly drive innovation and progress. We strive to create a
-          culture where people come first, where employees feel valued,
-          empowered, and supported, and where the success of our customers is
-          our top priority.”{" "}
+        <p>
+          At EpicEnigma Echo, we are passionate about delivering the latest and
+          greatest content in the realms of gaming and entertainment. Our
+          platform serves as a gateway for enthusiasts to immerse themselves in
+          the vibrant worlds of Twitch and YouTube, where creators push the
+          boundaries of creativity.
+        </p>
+        <p>
+          Our mission is to keep you ahead with the latest tech updates and to
+          provide a space for you to explore the exciting intersection of
+          innovation and fun.
+        </p>
+        <blockquote className={styles.quote} data-testId="aboutQuote">
+          “In the ever-evolving landscape of technology and entertainment,
+          EpicEnigma Echo is dedicated to creating a culture where users come
+          first. We believe in empowering and supporting our community, and we
+          prioritize the success and satisfaction of our users.”
         </blockquote>
-        <h2 className={styles.subheader}>Our Mission</h2>
-        <p>
-          For our Unicorns, we guide and facilitate the personal and
-          professional growth for every team member across all geographies while
-          promoting our values.
-        </p>
       </div>
     </div>
   );
