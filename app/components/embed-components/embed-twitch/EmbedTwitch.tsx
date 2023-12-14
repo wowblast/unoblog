@@ -1,4 +1,3 @@
-// EmbedTwitchClip.tsx
 import React from "react";
 import styles from "./EmbedTwitchClips.module.css"; // Import your CSS module
 

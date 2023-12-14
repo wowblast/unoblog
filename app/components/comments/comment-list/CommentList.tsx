@@ -1,4 +1,3 @@
-// CommentsList.js
 import React from "react";
 import styles from "./CommentList.module.css"; // Import your CSS module
 

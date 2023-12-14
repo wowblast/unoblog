@@ -17,10 +17,7 @@ const AdBlockDetector: React.FC = () => {
       testAd.innerHTML = "&nbsp;";
       document.body.appendChild(testAd);
 
-      // Wait for a short time and check if the ad element is still hidden
       setTimeout(() => {
-        console.log("test");
-        console.log(testAd);
         if (testAd.clientHeight === 0) {
           setAdBlockDetected(true);
         }

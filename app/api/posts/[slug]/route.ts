@@ -7,7 +7,6 @@ export const GET = async (
 ): Promise<Response> => {
   const slug = params?.slug ?? null;
 
-  // Check if slug is not null or undefined
   if (!slug) {
     return new Response(JSON.stringify({ message: "Slug is required" }), {
       status: 400,

@@ -36,14 +36,12 @@ const WritePage = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get("slug");
-    console.log("get posss on paramss", slug);
     const fetchPost = async () => {
       if (slug) {
         try {
           const response = await fetch(`/api/posts/${slug}`);
           const data = await response.json();
           setPost(data);
-          console.log(data.title);
           setTitle(data.title);
           setCatSlug(data.catSlug);
           setImagePreviewUrl(data.img);
@@ -89,21 +87,13 @@ const WritePage = () => {
         tweetLink: twitterData,
         youTubeLink: youtubeData,
         TwitchClipLink: twitchData,
-        catSlug: catSlug || "style", //If not selected, choose the general category
+        catSlug: catSlug || "style",
       }),
     });
 
     if (res.status === 200) {
       const data = await res.json();
       router.push(`/posts/${data.slug}`);
-    }
-
-    console.log(twitterData, youtubeData, twitchData);
-  };
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Update the state only if the value has changed
-    if (e.target.value !== title) {
-      setTitle(e.target.value);
     }
   };
 

@@ -1,13 +1,14 @@
-// CommentForm.js
 "use client";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import styles from "./CommentForm.module.css";
+import { timeStamp } from "console";
 
 interface CommentProps {
   postSlug: string;
+  onCommentSubmit: React.Dispatch<React.SetStateAction<number>>;
 }
-const CommentForm = ({ postSlug }: CommentProps) => {
+const CommentForm = ({ postSlug, onCommentSubmit }: CommentProps) => {
   const [comment, setComment] = useState("");
 
   const handleCommentChange = (e: {
@@ -18,14 +19,6 @@ const CommentForm = ({ postSlug }: CommentProps) => {
 
   const handleSubmit = async () => {
     try {
-      // Use Prisma to create a new comment
-      console.log({
-        data: {
-          desc: comment,
-          postSlug,
-        },
-      });
-
       const res = await fetch("/api/comments", {
         method: "POST",
         body: JSON.stringify({
@@ -36,11 +29,14 @@ const CommentForm = ({ postSlug }: CommentProps) => {
 
       if (res.status === 200) {
         const data = await res.json();
-        console.log("creado", data);
       }
 
-      // Reset the comment input after submission
       setComment("");
+      const timestamp: Date = new Date();
+
+      const timestampAsNumber: number = timestamp.getTime();
+
+      onCommentSubmit(timestampAsNumber);
     } catch (error) {
       console.error("Error submitting comment:", error);
     }

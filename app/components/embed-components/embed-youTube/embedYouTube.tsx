@@ -1,6 +1,5 @@
-// EmbedYouTube.tsx
 import React from "react";
-import styles from "./EmbedYouTube.module.css"; // Import your CSS module
+import styles from "./EmbedYouTube.module.css";
 
 interface EmbedYouTubeProps {
   videoId: string;
