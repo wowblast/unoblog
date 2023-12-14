@@ -1,9 +1,9 @@
 import { Category, Post, User , Comment} from "@prisma/client";
 import { PaginatedPostsResponse } from "./definitions";
-
+const apiUrl = process.env.API_URL;
 export const getCategories = async (): Promise<Category[]> => {
   try {
-    const response = await fetch("http://localhost:3000/api/categories", {
+    const response = await fetch(apiUrl+"/api/categories", {
       method: "GET",
       cache: "no-cache",
     });
@@ -26,7 +26,7 @@ export interface ExtendedComment extends Comment {
 
 export const getCommentsbyPost = async ( postSlug: string): Promise<ExtendedComment[]| null> => {
   try {
-    const response = await fetch(`http://localhost:3000/api/comments?postSlug=${postSlug}`, {
+    const response = await fetch(`${apiUrl}/api/comments?postSlug=${postSlug}`, {
       method: "GET",
       cache: "no-cache",
     });
@@ -51,7 +51,7 @@ export const getSinglePost = async (
   slug: string
 ): Promise<ExtendedPost | null> => {
   try {
-    const response = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+    const response = await fetch(`${apiUrl}/api/posts/${slug}`, {
       method: "GET",
       cache: "no-store",
     });
@@ -78,7 +78,7 @@ export const getPosts = async ({
   limit: number;
 }): Promise<PaginatedPostsResponse> => {
   try {
-    const url = `http://localhost:3000/api/posts?page=${page}&limit=${limit}${
+    const url = `${apiUrl}/api/posts?page=${page}&limit=${limit}${
       cat ? `&cat=${cat}` : ""
     }`;
 
@@ -105,7 +105,7 @@ export const uploadToCloudinary = async (
   formData.append("file", file);
 
   try {
-    const response = await fetch(`http://localhost:3000/api/upload`, {
+    const response = await fetch(`${apiUrl}/api/upload`, {
       method: "POST",
       body: formData,
     });
